@@ -1,7 +1,8 @@
 {
   "name": "Modo",
   "short_name": "Modo",
-  "start_url": "index.html",
+  "id": "/Modo/",
+  "start_url": "/Modo/",
   "display": "standalone",
   "background_color": "#eee",
   "theme_color": "#00aaff",

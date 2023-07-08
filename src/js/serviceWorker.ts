@@ -27,7 +27,7 @@ self.addEventListener("fetch", (fetchEvent: any) => {
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function() {
     navigator.serviceWorker
-      .register("/dist/serviceWorker.js")
+      .register("/Modo/dist/serviceWorker.js")
       .then(res => console.log("service worker registered"))
       .catch(err => console.log("service worker not registered", err))
   })
