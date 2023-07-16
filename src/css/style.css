@@ -367,11 +367,11 @@ input[type="color"] {
   transform: translate(-50%, -50%);
 }
 
-.tasks .tasks-list li p {
+.tasks{ .tasks-list li p {
   width: 75%;
   overflow-x: scroll;
   color: var(--alt-mode-color);
-}
+}}
 .tasks .tasks-list li  .options span,
 .tasks .tasks-list li .move-task {
   display: block;
@@ -404,12 +404,6 @@ input[type="color"] {
   transform: translateY(-25%);
 }
 
-/* .tasks .tasks-list li:nth-last-child(-n + 1) .options-list { */
-/*   top: -105%; */
-/* } */
-/* .tasks .tasks-list li:nth-last-child(-n + 1) .options-list::before { */
-/*   transform: translateY(35px); */
-/* } */
 
 .tasks .tasks-list li .hide {
   display: none;

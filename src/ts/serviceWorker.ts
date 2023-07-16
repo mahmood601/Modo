@@ -16,6 +16,8 @@ self.addEventListener("install", (installEvent: any) => {
   )
 })
 
+
+
 self.addEventListener("fetch", (fetchEvent: any) => {
   fetchEvent.respondWith(
     caches.match(fetchEvent.request).then(res => {
@@ -24,10 +26,14 @@ self.addEventListener("fetch", (fetchEvent: any) => {
   )
 })
 
+// self.addEventListener("beforeinstallprompt", (e) => {
+//   console.log(e.target)
+// })
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function() {
     navigator.serviceWorker
-      .register("/Modo/dist/serviceWorker.js")
+      .register("/dist/serviceWorker.js")
       .then(res => console.log("service worker registered"))
       .catch(err => console.log("service worker not registered", err))
   })

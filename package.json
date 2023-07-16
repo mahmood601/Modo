@@ -4,16 +4,21 @@
   "description": "free todo list for everyone ❤️",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node ./devEnv.js"
   },
   "repository": {
     "type": "git",
-    "url": "."
+    "url": "https://github.com/mahmood601/Modo"
   },
   "author": "mahmood601",
   "license": "MIT",
   "devDependencies": {
-    "eruda": "^3.0.0"
+    "concurrently": "^8.2.0",
+    "eruda": "^3.0.0",
+    "http-server": "^14.1.1",
+    "nodemon": "^3.0.1",
+    "sass": "^1.63.6",
+    "typescript": ""
   },
   "dependencies": {
     "localstorage-slim": "^2.4.0",
