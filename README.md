@@ -11,11 +11,9 @@ Welcome to my todo list application 👋
 
 ## Contribution
 
-<hr />
 The source code is open so do what you see convenient ☺️
 
 ## For Developers
 
-<hr />
 We add a script for handling all what we need, like: compiling typescript and set a local server, just run:
 `npm run dev`
