@@ -1,40 +1,65 @@
-const staticTodo = "Modo"
-const assets = [
-  "/",
-  "/index.html",
-  "/src/css/style.css",
-  "/src/css/normalize.css",
-  "/src/css/all.min.css",
-  "/dit/main.js",
-]
+// const staticTodo = "Modo";
+// const assets = [
+//   "/",
+//   "/index.html",
+//   "/src/css/style.css",
+//   "/src/css/normalize.css",
+//   "/src/css/all.min.css",
+//   "/dit/main.js",
+// ];
+// This is the service worker with the combined offline experience (Offline page + Offline copy of pages)
 
-self.addEventListener("install", (installEvent: any) => {
-  installEvent.waitUntil(
-    caches.open(staticTodo).then(cache => {
-      cache.addAll(assets)
-    })
-  )
-})
+const CACHE = "pwabuilder-offline-page";
 
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js",
+);
 
+// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
+const offlineFallbackPage = "index.html";
 
-self.addEventListener("fetch", (fetchEvent: any) => {
-  fetchEvent.respondWith(
-    caches.match(fetchEvent.request).then(res => {
-      return res || fetch(fetchEvent.request)
-    })
-  )
-})
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
 
-// self.addEventListener("beforeinstallprompt", (e) => {
-//   console.log(e.target)
-// })
+self.addEventListener("install", async (event) => {
+  event.waitUntil(
+    caches.open(CACHE).then((cache) => cache.add(offlineFallbackPage)),
+  );
+});
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function() {
-    navigator.serviceWorker
-      .register("/dist/serviceWorker.js")
-      .then(res => console.log("service worker registered"))
-      .catch(err => console.log("service worker not registered", err))
-  })
+if (workbox.navigationPreload.isSupported()) {
+  workbox.navigationPreload.enable();
 }
+
+workbox.routing.registerRoute(
+  new RegExp("/*"),
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: CACHE,
+  }),
+);
+
+self.addEventListener("fetch", (event) => {
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      (async () => {
+        try {
+          const preloadResp = await event.preloadResponse;
+
+          if (preloadResp) {
+            return preloadResp;
+          }
+
+          const networkResp = await fetch(event.request);
+          return networkResp;
+        } catch (error) {
+          const cache = await caches.open(CACHE);
+          const cachedResp = await cache.match(offlineFallbackPage);
+          return cachedResp;
+        }
+      })(),
+    );
+  }
+});

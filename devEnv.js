@@ -13,7 +13,7 @@ const { result } = concurrently(
       prefixColor: "green",
     },
     {
-      command: "tsc -w --outFile dist/main.js --sourceMap --removeComments",
+      command: "tsc -w --sourceMap --removeComments",
       name: "tsc",
       prefixColor: "blue",
     },
