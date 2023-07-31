@@ -106,13 +106,13 @@ inputTaskColor === null || inputTaskColor === void 0 ? void 0 : inputTaskColor.a
     e.stopPropagation();
 });
 function renderTasks(arrayOfTasks) {
-    var _a, _b;
+    var _a;
     parentinput.style.border = `2px solid var(--choosen-color)`;
     (_a = document.querySelectorAll(".tasks-list li")) === null || _a === void 0 ? void 0 : _a.forEach((element) => {
         element.remove();
     });
-    let list = document.createDocumentFragment();
     arrayOfTasks.forEach((task) => {
+        var _a;
         let fSpan = document.createElement("span");
         fSpan.classList.add("icon");
         fSpan.style.border = `2px solid ${task.icon}`;
@@ -148,7 +148,7 @@ function renderTasks(arrayOfTasks) {
         li.append(p);
         li.append(div);
         li.append(sSpan);
-        list.append(li);
+        (_a = document.querySelector(".tasks-list")) === null || _a === void 0 ? void 0 : _a.append(li);
         const opts = document.querySelectorAll(".span-opts");
         opts.forEach((opt) => {
             opt.addEventListener("click", () => {
@@ -158,7 +158,6 @@ function renderTasks(arrayOfTasks) {
             hideMenu(opt.nextElementSibling);
         });
     });
-    (_b = document.querySelector(".tasks-list")) === null || _b === void 0 ? void 0 : _b.append(list);
 }
 function findLiChild(item) {
     item.parentNode.classList.add("hide");

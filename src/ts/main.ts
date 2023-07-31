@@ -178,7 +178,6 @@ function renderTasks(arrayOfTasks: TaskModule[]) {
   document.querySelectorAll(".tasks-list li")?.forEach((element) => {
     element.remove();
   });
-  let list = document.createDocumentFragment();
   arrayOfTasks.forEach((task) => {
     let fSpan = document.createElement("span");
     fSpan.classList.add("icon");
@@ -220,7 +219,7 @@ function renderTasks(arrayOfTasks: TaskModule[]) {
     li.append(div);
     li.append(sSpan);
 
-    list.append(li);
+    document.querySelector(".tasks-list")?.append(li);
 
     const opts: NodeListOf<HTMLElement> =
       document.querySelectorAll(".span-opts");
@@ -233,7 +232,6 @@ function renderTasks(arrayOfTasks: TaskModule[]) {
       hideMenu(opt.nextElementSibling);
     });
   });
-  document.querySelector(".tasks-list")?.append(list);
 }
 
 function findLiChild(item: any) {
