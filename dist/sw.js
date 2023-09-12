@@ -9,24 +9,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const CACHE = "pwabuilder-offline-page";
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js");
-const offlineFallbackPage = "index.html";
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
+const offlineFallbackPage = "ToDo-replace-this-name.html";
 self.addEventListener("message", (event) => {
     if (event.data && event.data.type === "SKIP_WAITING") {
         self.skipWaiting();
     }
 });
-self.addEventListener("install", (event) => __awaiter(void 0, void 0, void 0, function* () {
-    event.waitUntil(caches.open(CACHE).then((cache) => cache.add(offlineFallbackPage)));
+self.addEventListener('install', (event) => __awaiter(void 0, void 0, void 0, function* () {
+    event.waitUntil(caches.open(CACHE)
+        .then((cache) => cache.add(offlineFallbackPage)));
 }));
 if (workbox.navigationPreload.isSupported()) {
     workbox.navigationPreload.enable();
 }
-workbox.routing.registerRoute(new RegExp("/*"), new workbox.strategies.StaleWhileRevalidate({
-    cacheName: CACHE,
+workbox.routing.registerRoute(new RegExp('/*'), new workbox.strategies.StaleWhileRevalidate({
+    cacheName: CACHE
 }));
-self.addEventListener("fetch", (event) => {
-    if (event.request.mode === "navigate") {
+self.addEventListener('fetch', (event) => {
+    if (event.request.mode === 'navigate') {
         event.respondWith((() => __awaiter(void 0, void 0, void 0, function* () {
             try {
                 const preloadResp = yield event.preloadResponse;
@@ -44,4 +45,4 @@ self.addEventListener("fetch", (event) => {
         }))());
     }
 });
-//# sourceMappingURL=serviceWorker.js.map
+//# sourceMappingURL=sw.js.map
