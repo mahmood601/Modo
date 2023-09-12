@@ -8,23 +8,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const CACHE = "pwabuilder-offline-page";
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
-const offlineFallbackPage = "ToDo-replace-this-name.html";
 self.addEventListener("message", (event) => {
     if (event.data && event.data.type === "SKIP_WAITING") {
         self.skipWaiting();
     }
 });
 self.addEventListener('install', (event) => __awaiter(void 0, void 0, void 0, function* () {
-    event.waitUntil(caches.open(CACHE)
-        .then((cache) => cache.add(offlineFallbackPage)));
+    event.waitUntil(caches.open("pwabuilder-offline-page")
+        .then((cache) => cache.add("../../index.html")));
 }));
 if (workbox.navigationPreload.isSupported()) {
     workbox.navigationPreload.enable();
 }
 workbox.routing.registerRoute(new RegExp('/*'), new workbox.strategies.StaleWhileRevalidate({
-    cacheName: CACHE
+    cacheName: "pwabuilder-offline-page"
 }));
 self.addEventListener('fetch', (event) => {
     if (event.request.mode === 'navigate') {
@@ -38,8 +36,8 @@ self.addEventListener('fetch', (event) => {
                 return networkResp;
             }
             catch (error) {
-                const cache = yield caches.open(CACHE);
-                const cachedResp = yield cache.match(offlineFallbackPage);
+                const cache = yield caches.open("pwabuilder-offline-page");
+                const cachedResp = yield cache.match("../../index.html");
                 return cachedResp;
             }
         }))());

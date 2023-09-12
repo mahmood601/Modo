@@ -95,7 +95,11 @@
   </script>
   <!---->
   <script src="dist/main.js"></script>
-  <script src="dist/pwabuilder-sw.js"></script>
+  <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('./dist/sw.js')
+    }
+  </script>
 </body>
 
 </html>
