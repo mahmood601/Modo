@@ -1,12 +1,3 @@
-// const staticTodo = "Modo";
-// const assets = [
-//   "/",
-//   "/index.html",
-//   "/src/css/style.css",
-//   "/src/css/normalize.css",
-//   "/src/css/all.min.css",
-//   "/dit/main.js",
-// ];
 // This is the service worker with the combined offline experience (Offline page + Offline copy of pages)
 
 const CACHE = "pwabuilder-offline-page";
