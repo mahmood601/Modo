@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
   <title>Modo</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="src/css/style.css" rel="stylesheet">
-  <link href="src/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="src/css/normalize.css">
-  <link rel="icon" href="images/icon-72×72.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="src/css/style.css" rel="stylesheet" />
+  <link href="src/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="src/css/normalize.css" />
+  <link rel="icon" href="images/icon-72×72.ico" />
   <link rel="manifest" href="manifest.json" />
   <!-- ios support -->
   <link rel="apple-touch-icon" href="images/icon-72×72.png" />
@@ -28,9 +28,10 @@
     <div class="header" role="banner">
       <h1 class="logo">Modo</h1>
       <div class="menu">
-        <img id="button" alt="">
+        <img id="button" alt="" />
         <ul class="list hide" role="navigation">
-          <li>Dark
+          <li>
+            Dark
             <span id="mode">
               <span></span>
             </span>
@@ -41,7 +42,7 @@
             <ul class="setting-list hide">
               <li>
                 <label>
-                  <input type="file" id="u-image" accept="image/x-png,image/gif,image/jpeg">
+                  <input type="file" id="u-image" accept="image/x-png,image/gif,image/jpeg" />
                   Change image
                 </label>
               </li>
@@ -53,7 +54,7 @@
                   <li data-color="#AA00FF"></li>
                   <li data-color="#eee">
                     <label>+
-                      <input id="extra-color" type="color">
+                      <input id="extra-color" type="color" />
                     </label>
                   </li>
                 </ul>
@@ -61,28 +62,27 @@
             </ul>
           </li>
         </ul>
-
       </div>
     </div>
     <div id="progress" class="progress-circle" data-progress="0"></div>
     <div class="tasks">
       <form class="input-box">
         <label class="icon checkbox">
-
-          <input type="color" id="task-icon">
+          <input type="color" id="task-icon" />
         </label>
-        <input id="task-content" type="text" placeholder="Enter your task..." autocomplete="off">
-
+        <input id="task-content" type="text" placeholder="Enter your task..." autocomplete="off" />
       </form>
-      <ul class="tasks-list">
-      </ul>
+      <ul class="tasks-list"></ul>
     </div>
     <ul class="footer">
       <li class="active">All</li>
       <li>In Progress</li>
       <li>Completed</li>
     </ul>
-    <p class="conc">Made With <span>♡</span> By <a href="https://t.me/Mahmood_pro">Mahmood</a></p>
+    <p class="conc">
+      Made With <span>♡</span> By
+      <a href="https://t.me/Mahmood_pro">Mahmood</a>
+    </p>
   </div>
   <!-- Allow this for developing -->
   <!-- <script src="node_modules/eruda/eruda.js"></script> -->
@@ -90,11 +90,8 @@
   <!--   eruda.init(); -->
   <!-- </script> -->
   <!---->
-  <script src="dist/main.js">
-  </script>
-  <script defer src="dist/serviceWorker.js">
-  </script>
-
+  <script src="dist/main.js"></script>
+  <script src="dist/serviceWorker.js"></script>
 </body>
 
 </html>
