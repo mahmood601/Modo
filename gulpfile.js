@@ -6,6 +6,8 @@ const ts = require('gulp-typescript');
 const connect = require('gulp-connect');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
+const webp = require('gulp-webp');
+ 
 const tsProject = ts.createProject('tsconfig.json');
 
 // copying files
@@ -40,7 +42,11 @@ const scriptsBun = () => src('dist/js/*.js')
   .pipe(dest('dist/js'))
   .pipe(connect.reload());
 
-// مهمة لإنشاء خادم HTTPS
+const webpTrans = () =>    gulp.src('src/**/*.{png,jpg,jpeg}')
+        .pipe(webp())
+        .pipe(gulp.dest('dist/images'));
+
+// HTTPS
 const httpsServer = () => connect.server({
   host: 'localhost',
   root: 'dist',
@@ -64,6 +70,6 @@ watcher.on('unlink', function(path, stats) {
 
 watcher.close();
 
-exports.serve = parallel(copy, httpsServer, pugCompile, styles, typescriptCompile, scriptsBun)
-exports.default = series(copy, pugCompile, styles, typescriptCompile, scriptsBun)
+exports.serve = parallel(copy, webpTrans, httpsServer, pugCompile, styles, typescriptCompile, scriptsBun)
+exports.default = series(copy, webpTrans, pugCompile, styles, typescriptCompile, scriptsBun)
 
