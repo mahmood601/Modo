@@ -1,4 +1,5 @@
 "use strict";
+// This is the service worker with the combined offline experience (Offline page + Offline copy of pages)
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
+// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
 self.addEventListener("message", (event) => {
     if (event.data && event.data.type === "SKIP_WAITING") {
         self.skipWaiting();
@@ -16,7 +18,7 @@ self.addEventListener("message", (event) => {
 });
 self.addEventListener('install', (event) => __awaiter(void 0, void 0, void 0, function* () {
     event.waitUntil(caches.open("pwabuilder-offline-page")
-        .then((cache) => cache.add("../../index.html")));
+        .then((cache) => cache.add("../index.html")));
 }));
 if (workbox.navigationPreload.isSupported()) {
     workbox.navigationPreload.enable();
@@ -43,4 +45,3 @@ self.addEventListener('fetch', (event) => {
         }))());
     }
 });
-//# sourceMappingURL=sw.js.map

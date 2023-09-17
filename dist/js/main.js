@@ -22,6 +22,7 @@ toggleMenu(mainButton, mainButton === null || mainButton === void 0 ? void 0 : m
 hideMenu(mainButton === null || mainButton === void 0 ? void 0 : mainButton.nextElementSibling);
 toggleMenu(setting, setting === null || setting === void 0 ? void 0 : setting.nextElementSibling);
 hideMenu(setting === null || setting === void 0 ? void 0 : setting.nextElementSibling);
+// start storing informations
 let toStore = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 let fromStore = (key) => JSON.parse(localStorage.getItem(key));
 let person = { image: "", mode: "", favColor: "", tasks: [] };
@@ -32,10 +33,12 @@ let updateStorage = (image = person.image, mode = person.mode, favColor = person
     person.tasks = tasks;
     toStore("person", person);
 };
+// start sending info to localStorage -- mode - image - favColor --
 const userImage = document.getElementById("u-image");
 userImage.addEventListener("change", (event) => {
     var _a;
     const reader = new FileReader();
+    // Convert image to base64 and store it in localStorage
     reader.readAsDataURL((_a = userImage.files) === null || _a === void 0 ? void 0 : _a.item(0));
     reader.addEventListener("load", () => {
         updateStorage(reader.result, fromStore("person").mode, fromStore("person").favColor, fromStore("person").tasks);
@@ -63,6 +66,8 @@ colorsList.forEach((color) => {
             .querySelector("html")) === null || _a === void 0 ? void 0 : _a.style.setProperty("--fav-color", color.dataset.color);
     });
 });
+// start handling tasks operations
+// Define an object to store all task info
 class Task {
     constructor(icon, id, content, status) {
         this.icon = icon;
@@ -251,6 +256,9 @@ modeButton === null || modeButton === void 0 ? void 0 : modeButton.addEventListe
         }
     }
 });
+/**
+ * Remove a specific classes from element
+ * */
 function changeActive(collectionOfEle, ...classes) {
     collectionOfEle.forEach((ele) => {
         ele.addEventListener("click", (e) => {
@@ -287,4 +295,4 @@ if (fromStore("person")) {
     }
     renderTasks(fromStore("person").tasks);
 }
-//# sourceMappingURL=main.js.map
+ondWith(__awaiter(void 0,void 0,void 0,function*(){try{var e=yield t.preloadResponse;return e?e:yield fetch(t.request)}catch(e){return yield(yield caches.open("pwabuilder-offline-page")).match("../../index.html")}}))});

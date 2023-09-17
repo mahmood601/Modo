@@ -14,7 +14,7 @@ self.addEventListener("message", (event) => {
 self.addEventListener('install', async (event) => {
   event.waitUntil(
     caches.open("pwabuilder-offline-page")
-      .then((cache) => cache.add("../../index.html"))
+      .then((cache) => cache.add("../index.html"))
   );
 });
 
