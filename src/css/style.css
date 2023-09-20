@@ -71,6 +71,7 @@
   border: 3px solid transparent;
   outline: 3px solid transparent;
   background-color: var(--sec-mode-color);
+  aspect-ratio: 1/1;
 }
 
 .header .menu #button.clicked {
