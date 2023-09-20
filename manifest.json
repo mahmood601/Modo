@@ -17,12 +17,6 @@
   "dir": "auto",
   "scope": "/Modo",
   "lang": "en",
-  "display_override": [
-    "standalone",
-    "window-controls-overlay"
-  ],
-  "description": "Free Todo List for everyone 💙",
-  "categories": [
-    "lifestyle"
-  ]
+  "display_override": ["standalone", "window-controls-overlay"],
+  "description": "Free Todo List for everyone 💙"
 }

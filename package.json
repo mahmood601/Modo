@@ -4,8 +4,7 @@
   "description": "free todo list for everyone ❤️",
   "main": "index.html",
   "scripts": {
-    "dev": "gulp serve",
-    "build": "gulp"
+    "dev": "node ./devEnv.js"
   },
   "repository": {
     "type": "git",
@@ -13,19 +12,16 @@
   },
   "author": "mahmood601",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
+    "concurrently": "^8.2.0",
     "eruda": "^3.0.0",
-    "gulp": "^4.0.2",
-    "gulp-cli": "^2.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-connect": "^5.7.0",
-    "gulp-postcss": "^9.0.1",
-    "gulp-pug": "^5.0.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
-    "gulp-uglify": "^3.0.2",
+    "http-server": "^14.1.1",
+    "nodemon": "^3.0.1",
+    "sass": "^1.63.6",
+    "typescript": ""
+  },
+  "dependencies": {
     "localstorage-slim": "^2.4.0",
-    "mobile-drag-drop": "^3.0.0-rc.0",
-    "tailwindcss": "^3.3.3",
-    "typescipt": "^1.0.0"
+    "mobile-drag-drop": "^3.0.0-rc.0"
   }
 }

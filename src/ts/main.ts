@@ -423,3 +423,4 @@ if (fromStore("person")) {
   renderTasks(fromStore("person").tasks);
 }
 
+// Drag and Drop events

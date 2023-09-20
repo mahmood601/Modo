@@ -56,17 +56,12 @@
 
 .header .menu {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
   position: relative;
   right: 0;
-  width: 35%;
-}
-
-.header .menu > i ,
-.header .menu > a i {
-  font-size: 25px;
-  color: var(--alt-mode-color);
+  width: 25%;
 }
 
 .header .menu #button {

@@ -5,9 +5,9 @@
   <title>Modo</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="css/style.css" rel="stylesheet" />
-  <link href="css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/normalize.css" />
+  <link href="src/css/style.css" rel="stylesheet" />
+  <link href="src/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="src/css/normalize.css" />
   <link rel="icon" href="images/icon-72×72.ico" />
   <link rel="manifest" href="manifest.json" />
   <!-- ios support -->
@@ -27,11 +27,7 @@
   <div class="container">
     <div class="header" role="banner">
       <h1 class="logo">Modo</h1>
-      <nav class="menu">
-        <i class="notification fa-solid fa-bell"></i>
-        <a href="https://github.com/mahmood601/Modo">
-          <i class="github fa-brands fa-github"></i>
-        </a>
+      <div class="menu">
         <img id="button" alt="" />
         <ul class="list hide" role="navigation">
           <li>
@@ -66,7 +62,7 @@
             </ul>
           </li>
         </ul>
-      </nav>
+      </div>
     </div>
     <div id="progress" class="progress-circle" data-progress="0"></div>
     <div class="tasks">
@@ -85,21 +81,17 @@
     </ul>
     <p class="conc">
       Made With <span>♡</span> By
-      <a href="https://t.me/Mahmood28">Mahmood</a>
+      <a href="https://t.me/Mahmood_pro">Mahmood</a>
     </p>
   </div>
   <!-- Allow this for developing -->
-  <!-- <script src="../node_modules/eruda/eruda.js"></script> -->
-  <script>
-    // eruda.init();
-  </script>
+  <!-- <script src="node_modules/eruda/eruda.js"></script> -->
+  <!-- <script> -->
+  <!--   eruda.init(); -->
+  <!-- </script> -->
   <!---->
-  <script src="js/main.js"></script>
-  <script>
-    if (typeof navigator.serviceWorker !== 'undefined') {
-      navigator.serviceWorker.register('js/sw.js')
-    }
-  </script>
+  <script src="dist/main.js"></script>
+  <script src="dist/serviceWorker.js"></script>
 </body>
 
 </html>
