@@ -26,7 +26,12 @@ function hideMenu(menu: Element | null | undefined) {
     }
   });
 }
-
+mainButton.addEventListener('click', () => {
+  if (!setting?.nextElementSibling.classList.contains("hide")) {
+      setting?.nextElementSibling.classList.add("hide");
+    }
+  }
+)
 toggleMenu(mainButton, mainButton?.nextElementSibling);
 hideMenu(mainButton?.nextElementSibling);
 toggleMenu(setting, setting?.nextElementSibling);
@@ -178,7 +183,7 @@ function renderTasks(arrayOfTasks: TaskModule[]) {
   document.querySelectorAll(".tasks-list li")?.forEach((element) => {
     element.remove();
   });
-  arrayOfTasks.forEach((task) => {
+  arrayOfTasks.forEach((task, index) => {
     let fSpan = document.createElement("span");
     fSpan.classList.add("icon");
     fSpan.style.border = `2px solid ${task.icon}`;
@@ -214,6 +219,9 @@ function renderTasks(arrayOfTasks: TaskModule[]) {
     let li = document.createElement("li");
     li.setAttribute("data-id", `${task.id}`);
     li.setAttribute("data-status", task.status ? "completed" : "not-completed");
+    if (fromStore("person").tasks.length >= 5 && (fromStore("person").tasks.length - 1 == index || fromStore("person").tasks.length - 2 == index)) {
+      li.classList.add("last-li")
+    }
     li.append(fSpan);
     li.append(p);
     li.append(div);

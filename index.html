@@ -8,7 +8,6 @@
   <meta name="description" content="Free Todo app for everyone Free 🤩">
   <link href="src/css/style.css" rel="stylesheet" />
   <link href="src/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/normalize.css" />
   <link rel="icon" href="images/icon-72×72.ico" />
   <link rel="manifest" href="manifest.json" />
   <!-- ios support -->
@@ -28,7 +27,12 @@
   <div class="container">
     <div class="header" role="banner">
       <h1 class="logo">Modo</h1>
+
       <nav class="menu">
+        <div class="icons">
+          <i class="fa-solid fa-bell"></i>
+          <a href="https://github.com/mahmood601/Modo"><i class="fa-brands fa-github"></i></a>
+        </div>
         <img id="button" alt="" />
         <menu class="list hide">
           <li>
@@ -39,11 +43,12 @@
             Light
           </li>
           <li class="setting-container">
-            <p class="setting" id="setting">Setting</p>
+            <p class="setting" id="setting"><i class="fa-solid fa-gear special-icon"></i>Setting</p>
             <ul class="setting-list hide">
               <li>
                 <label>
                   <input type="file" id="u-image" accept="image/x-png,image/gif,image/jpeg" />
+                  <i class="fa-solid fa-image special-icon"></i>
                   Change image
                 </label>
               </li>
@@ -82,13 +87,13 @@
     </ul>
     <p class="conc">
       Made With <span>♡</span> By
-      <a href="https://t.me/Mahmood_pro">Mahmood</a>
+      <a href="https://t.me/Mahmood28">Mahmood</a>
     </p>
   </div>
   <!-- Allow this for developing -->
   <!-- <script src="node_modules/eruda/eruda.js"></script> -->
   <!-- <script> -->
-  <!--   eruda.init(); -->
+     <!-- eruda.init(); -->
   <!-- </script> -->
   <!---->
   <script src="dist/main.js"></script>

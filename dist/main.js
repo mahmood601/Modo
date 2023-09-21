@@ -18,6 +18,11 @@ function hideMenu(menu) {
         }
     });
 }
+mainButton.addEventListener('click', () => {
+    if (!(setting === null || setting === void 0 ? void 0 : setting.nextElementSibling.classList.contains("hide"))) {
+        setting === null || setting === void 0 ? void 0 : setting.nextElementSibling.classList.add("hide");
+    }
+});
 toggleMenu(mainButton, mainButton === null || mainButton === void 0 ? void 0 : mainButton.nextElementSibling);
 hideMenu(mainButton === null || mainButton === void 0 ? void 0 : mainButton.nextElementSibling);
 toggleMenu(setting, setting === null || setting === void 0 ? void 0 : setting.nextElementSibling);
@@ -111,7 +116,7 @@ function renderTasks(arrayOfTasks) {
     (_a = document.querySelectorAll(".tasks-list li")) === null || _a === void 0 ? void 0 : _a.forEach((element) => {
         element.remove();
     });
-    arrayOfTasks.forEach((task) => {
+    arrayOfTasks.forEach((task, index) => {
         var _a;
         let fSpan = document.createElement("span");
         fSpan.classList.add("icon");
@@ -144,6 +149,9 @@ function renderTasks(arrayOfTasks) {
         let li = document.createElement("li");
         li.setAttribute("data-id", `${task.id}`);
         li.setAttribute("data-status", task.status ? "completed" : "not-completed");
+        if (fromStore("person").tasks.length >= 5 && (fromStore("person").tasks.length - 1 == index || fromStore("person").tasks.length - 2 == index)) {
+            li.classList.add("last-li");
+        }
         li.append(fSpan);
         li.append(p);
         li.append(div);
