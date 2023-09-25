@@ -41,4 +41,21 @@ self.addEventListener('fetch', (event) => {
         return response;
     })));
 });
+Notification.requestPermission((status) => {
+    console.log('Notification permission status:', status);
+});
+if (Notification.permission === 'granted') {
+    navigator.serviceWorker.getRegistrations().then((reg) => {
+        var options = {
+            body: 'This is the body of the notification',
+            icon: 'icon.png',
+            badge: 'badge.png'
+        };
+        reg[0].showNotification('Notification Title', options);
+    });
+}
+self.addEventListener('notificationclick', (event) => {
+    event.notification.close();
+    event.waitUntil(nclients.openWindow('https://example.com'));
+});
 //# sourceMappingURL=serviceWorker.js.map
