@@ -35,7 +35,7 @@ self.addEventListener('fetch', (event) => {
     }));
 });
 self.addEventListener('fetch', (event) => {
-    event.respondWith(caches.open('my-cache').then((cache) => fetch(event.request)
+    event.respondWith(caches.open('modo').then((cache) => fetch(event.request)
         .then((response) => {
         cache.put(event.request, response.clone());
         return response;
@@ -56,6 +56,6 @@ if (Notification.permission === 'granted') {
 }
 self.addEventListener('notificationclick', (event) => {
     event.notification.close();
-    event.waitUntil(nclients.openWindow('https://example.com'));
+    event.waitUntil(clients.openWindow('https://example.com'));
 });
 //# sourceMappingURL=serviceWorker.js.map

@@ -42,7 +42,7 @@ self.addEventListener('fetch', (event: any) => {
 
 self.addEventListener('fetch', (event: any) => {
   event.respondWith(
-    caches.open('my-cache').then((cache) =>  fetch(event.request)
+    caches.open('modo').then((cache) =>  fetch(event.request)
     .then((response) => {
         cache.put(event.request, response.clone());
         return response;
@@ -73,6 +73,6 @@ self.addEventListener('notificationclick', (event: any) => {
   event.notification.close();
 
   event.waitUntil(
-    nclients.openWindow('https://example.com')
+    clients.openWindow('https://example.com')
   );
 });
