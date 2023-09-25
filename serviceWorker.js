@@ -1,5 +1,4 @@
-"use strict";
-const assets = [
+var assets = [
     "/",
     "/index.html",
     "/dist/main.js",
@@ -26,26 +25,26 @@ const assets = [
     "/src/webfonts/fa-regular-400.woff2",
     "/src/webfonts/fa-v4compatibility.woff2",
 ];
-self.addEventListener("install", (e) => {
-    event === null || event === void 0 ? void 0 : event.waitUntil(caches.open("modo").then((cache) => cache.addAll(assets)));
+self.addEventListener("install", function (e) {
+    event === null || event === void 0 ? void 0 : event.waitUntil(caches.open("modo").then(function (cache) { return cache.addAll(assets); }));
 });
-self.addEventListener('fetch', (event) => {
-    event.respondWith(caches.match(event.request).then((response) => {
+self.addEventListener('fetch', function (event) {
+    event.respondWith(caches.match(event.request).then(function (response) {
         return response || fetch(event.request);
     }));
 });
-self.addEventListener('fetch', (event) => {
-    event.respondWith(caches.open('modo').then((cache) => fetch(event.request)
-        .then((response) => {
+self.addEventListener('fetch', function (event) {
+    event.respondWith(caches.open('modo').then(function (cache) { return fetch(event.request)
+        .then(function (response) {
         cache.put(event.request, response.clone());
         return response;
-    })));
+    }); }));
 });
-Notification.requestPermission((status) => {
+Notification.requestPermission(function (status) {
     console.log('Notification permission status:', status);
 });
 if (Notification.permission === 'granted') {
-    navigator.serviceWorker.getRegistrations().then((reg) => {
+    navigator.serviceWorker.getRegistrations().then(function (reg) {
         var options = {
             body: 'مرحبا انا محمود',
             icon: '../../images/icon-72×72.ico',

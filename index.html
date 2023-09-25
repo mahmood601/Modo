@@ -91,15 +91,15 @@
     </p>
   </div>
   <!-- Allow this for developing -->
-  <script src="dist/eruda.js"></script>
-  <script>
-    eruda.init();
-  </script>
+  <!-- <script src="dist/eruda.js"></script> -->
+  <!-- <script> -->
+  <!--   eruda.init(); -->
+  <!-- </script> -->
   <!---->
   <script defer src="dist/serviceWorker.js"></script>
   <script defer>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/Modo/dist/serviceWorker.js')
+      navigator.serviceWorker.register('/Modo/serviceWorker.js')
         .then(function (registration) {
           console.log('Service Worker registered with scope:', registration.scope);
         })

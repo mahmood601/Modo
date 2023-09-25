@@ -13,10 +13,16 @@ const { result } = concurrently(
       prefixColor: "green",
     },
     {
-      command: "tsc -w --sourceMap --removeComments",
+      command: "tsc -w --sourceMap --removeComments src/ts/main.ts",
       name: "tsc",
       prefixColor: "blue",
     },
+    {
+      command: "tsc -w --sourceMap --removeComments src/ts/serviceWorker.ts --outDir ./",
+      name: "tsc",
+      prefixColor: "blue",
+    },
+
   ],
   {
     prefix: "name",
