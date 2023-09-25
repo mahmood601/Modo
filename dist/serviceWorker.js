@@ -47,15 +47,11 @@ Notification.requestPermission((status) => {
 if (Notification.permission === 'granted') {
     navigator.serviceWorker.getRegistrations().then((reg) => {
         var options = {
-            body: 'This is the body of the notification',
-            icon: 'icon.png',
-            badge: 'badge.png'
+            body: 'مرحبا انا محمود',
+            icon: '../../images/icon-72×72.ico',
+            badge: '../../images/icon-72×72.webp',
         };
-        reg[0].showNotification('Notification Title', options);
+        reg[0].showNotification('Modo', options);
     });
 }
-self.addEventListener('notificationclick', (event) => {
-    event.notification.close();
-    event.waitUntil(clients.openWindow('https://example.com'));
-});
 //# sourceMappingURL=serviceWorker.js.map
