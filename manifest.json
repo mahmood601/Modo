@@ -2,6 +2,7 @@
   "name": "Modo",
   "short_name": "Modo",
   "id": "/Modo/",
+  "scope": "/Modo/",
   "start_url": "/Modo/",
   "display": "standalone",
   "background_color": "#eee",
@@ -9,13 +10,12 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "images/icon-512×512.png",
+      "src": "images/icon-512×512.webp",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "dir": "auto",
-  "scope": "/Modo",
   "lang": "en",
   "display_override": ["standalone", "window-controls-overlay"],
   "description": "Free Todo List for everyone 💙"

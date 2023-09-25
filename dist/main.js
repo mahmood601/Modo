@@ -19,8 +19,9 @@ function hideMenu(menu) {
     });
 }
 mainButton.addEventListener('click', () => {
-    if (!(setting === null || setting === void 0 ? void 0 : setting.nextElementSibling.classList.contains("hide"))) {
-        setting === null || setting === void 0 ? void 0 : setting.nextElementSibling.classList.add("hide");
+    var _a, _b;
+    if (!((_a = setting === null || setting === void 0 ? void 0 : setting.nextElementSibling) === null || _a === void 0 ? void 0 : _a.classList.contains("hide"))) {
+        (_b = setting === null || setting === void 0 ? void 0 : setting.nextElementSibling) === null || _b === void 0 ? void 0 : _b.classList.add("hide");
     }
 });
 toggleMenu(mainButton, mainButton === null || mainButton === void 0 ? void 0 : mainButton.nextElementSibling);

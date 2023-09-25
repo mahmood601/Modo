@@ -1,47 +1,44 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-const CACHE = "pwabuilder-offline-page";
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js");
-const offlineFallbackPage = "index.html";
-self.addEventListener("message", (event) => {
-    if (event.data && event.data.type === "SKIP_WAITING") {
-        self.skipWaiting();
-    }
+const assets = [
+    "/",
+    "/index.html",
+    "/dist/main.js",
+    "/dist/serviceWorker.js",
+    "/src/css/style.css",
+    "/src/css/all.min.css",
+    "/images/enter-task.webp",
+    "/images/modo-light.webp",
+    "/images/icon-72×72.ico",
+    "/images/icon-72×72.webp",
+    "/images/icon-96×96.webp",
+    "/images/icon-128×128.webp",
+    "/images/icon-144×144.webp",
+    "/images/icon-152×152.webp",
+    "/images/icon-192×192.webp",
+    "/images/icon-384×384.webp",
+    "/images/icon-512×512.webp",
+    "/src/webfonts/fa-solid-900.ttf",
+    "/src/webfonts/fa-brands-400.ttf",
+    "/src/webfonts/fa-regular-400.ttf",
+    "/src/webfonts/fa-v4compatibility.ttf",
+    "/src/webfonts/fa-solid-900.woff2",
+    "/src/webfonts/fa-brands-400.woff2",
+    "/src/webfonts/fa-regular-400.woff2",
+    "/src/webfonts/fa-v4compatibility.woff2",
+];
+self.addEventListener("install", (e) => {
+    event === null || event === void 0 ? void 0 : event.waitUntil(caches.open("modo").then((cache) => cache.addAll(assets)));
 });
-self.addEventListener("install", (event) => __awaiter(void 0, void 0, void 0, function* () {
-    event.waitUntil(caches.open(CACHE).then((cache) => cache.add(offlineFallbackPage)));
-}));
-if (workbox.navigationPreload.isSupported()) {
-    workbox.navigationPreload.enable();
-}
-workbox.routing.registerRoute(new RegExp("/*"), new workbox.strategies.StaleWhileRevalidate({
-    cacheName: CACHE,
-}));
-self.addEventListener("fetch", (event) => {
-    if (event.request.mode === "navigate") {
-        event.respondWith((() => __awaiter(void 0, void 0, void 0, function* () {
-            try {
-                const preloadResp = yield event.preloadResponse;
-                if (preloadResp) {
-                    return preloadResp;
-                }
-                const networkResp = yield fetch(event.request);
-                return networkResp;
-            }
-            catch (error) {
-                const cache = yield caches.open(CACHE);
-                const cachedResp = yield cache.match(offlineFallbackPage);
-                return cachedResp;
-            }
-        }))());
-    }
+self.addEventListener('fetch', (event) => {
+    event.respondWith(caches.match(event.request).then((response) => {
+        return response || fetch(event.request);
+    }));
+});
+self.addEventListener('fetch', (event) => {
+    event.respondWith(caches.open('my-cache').then((cache) => fetch(event.request)
+        .then((response) => {
+        cache.put(event.request, response.clone());
+        return response;
+    })));
 });
 //# sourceMappingURL=serviceWorker.js.map

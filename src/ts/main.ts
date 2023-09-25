@@ -27,8 +27,8 @@ function hideMenu(menu: Element | null | undefined) {
   });
 }
 mainButton.addEventListener('click', () => {
-  if (!setting?.nextElementSibling.classList.contains("hide")) {
-      setting?.nextElementSibling.classList.add("hide");
+  if (!setting?.nextElementSibling?.classList.contains("hide")) {
+      setting?.nextElementSibling?.classList.add("hide");
     }
   }
 )
@@ -431,4 +431,3 @@ if (fromStore("person")) {
   renderTasks(fromStore("person").tasks);
 }
 
-// Drag and Drop events
