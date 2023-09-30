@@ -1,3 +1,5 @@
+// Add assets to Cache
+
 const assets = [
   "/",
   "/index.html",
@@ -25,48 +27,34 @@ const assets = [
   "/src/webfonts/fa-regular-400.woff2",
   "/src/webfonts/fa-v4compatibility.woff2",
 ];
-self.addEventListener("install", (e: any) => {
+
+
+// Install the app
+self.addEventListener("install", (event: any): void => {
   event?.waitUntil(
     caches.open("modo").then((cache: Cache) => cache.addAll(assets))
   )
 })
 
-self.addEventListener('fetch', (event: any) => {
+// Fetch Assets => [Need Review]
+self.addEventListener('fetch', (event: any): void => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
+    caches.match(event.request).then((response: Response | undefined): Response | Promise<Response> => {
       return response || fetch(event.request);
     })
   );
 });
 
 
-self.addEventListener('fetch', (event: any) => {
+self.addEventListener('fetch', (event: any): void => {
   event.respondWith(
-    caches.open('modo').then((cache) =>  fetch(event.request)
-    .then((response) => {
+    caches.open('modo').then((cache) => fetch(event.request)
+      .then((response: Response): Response => {
         cache.put(event.request, response.clone());
         return response;
       })
     )
   );
 });
-
-
-Notification.requestPermission((status) => {
-  console.log('Notification permission status:', status);
-});
-
-if (Notification.permission === 'granted') {
-  navigator.serviceWorker.getRegistrations().then((reg) => {
-    var options = {
-      body: 'مرحبا انا محمود',
-      icon: '../../images/icon-72×72.ico',
-      badge: '../../images/icon-72×72.webp',
-
-    };
-
-    reg[0].showNotification('Modo', options);
-  });
-}
 
 

@@ -4,34 +4,26 @@
 
 const concurrently = require("concurrently");
 const path = require("path");
-const { result } = concurrently(
+const { commands, result } = concurrently(
   [
     "npm:watch-*",
     {
-      command: "sleep 2s && http-server -c 0",
+      command: "sleep 2s && http-server -c1",
       name: "server",
       prefixColor: "green",
-    },
+    }, 
     {
-      command: "tsc -w --sourceMap --removeComments src/ts/main.ts",
-      name: "tsc",
-      prefixColor: "blue",
-    },
+      command: "esbuild --watch --target=chrome58 --minify-syntax --minify-whitespace --color=true --loader:.ttf=copy --loader:.woff2=file --bundle src/css/style.css src/css/all.min.css --outdir=dist",
+      name: "css",
+      prefixColor: "magenta",
+    }, 
     {
-      command: "tsc -w --sourceMap --removeComments src/ts/serviceWorker.ts --outDir ./",
-      name: "tsc",
+      command: "esbuild --sourcemap=inline --watch --minify --color=true  --bundle src/ts/main.ts  --outfile=dist/main.js",
+      name: "typescript",
       prefixColor: "blue",
     },
 
   ],
-  {
-    prefix: "name",
-    killOthers: ["failure", "success"],
-    restartTries: 3,
-    cwd: path.resolve(__dirname, "./"),
-    kill: ["SIGINT", "SIGKILL", "SIGTERM", "0"],
-    close: null,
-  },
 );
 
 result.then((suc, fail) => {

@@ -6,8 +6,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Free Todo app for everyone Free 🤩">
-  <link href="src/css/style.css" rel="stylesheet" />
-  <link href="src/css/all.min.css" rel="stylesheet" />
+  <link href="dist/style.css" rel="stylesheet" />
+  <link href="dist/all.min.css" rel="stylesheet" />
   <link rel="icon" href="images/icon-72×72.ico" />
   <link rel="manifest" href="manifest.json" />
   <!-- ios support -->
@@ -91,23 +91,11 @@
     </p>
   </div>
   <!-- Allow this for developing -->
-  <!-- <script src="dist/eruda.js"></script> -->
-  <!-- <script> -->
-  <!--   eruda.init(); -->
-  <!-- </script> -->
-  <!---->
-  <script defer src="serviceWorker.js"></script>
-  <script defer>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/Modo/serviceWorker.js', {scope: "/Modo/"})
-        .then(function (registration) {
-          console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch(function (error) {
-          console.log('Service Worker registration failed:', error);
-        });
-    }
+  <script src="node_modules/eruda/eruda.js"></script>
+  <script>
+    eruda.init();
   </script>
+  <!---->
   <script defer src="dist/main.js"></script>
 </body>
 
