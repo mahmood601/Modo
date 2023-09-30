@@ -1,32 +1,28 @@
-export const changeProgress = (tasks: any, newTasks: any, status: boolean) => {
- let oTasks = tasks.filter((task: any) => (task.status ? task : ""));
-  let nTasks = newTasks.filter((task: any) => (task.status ? task : ""));
-  let percent = oTasks.length !== 0 ? (oTasks.length * 100) / tasks.length : 0;
-  let newPercent = nTasks.length !== 0 ? (nTasks.length * 100) / newTasks.length : 0;
+export const changeProgress = (tasks: any, status: boolean) => {
+  let filteredTasks = tasks.filter((task: any) => (task.status ? task : ""));
+  let percent = Number.parseInt(`${filteredTasks.length !== 0 ? (filteredTasks.length * 100) / tasks.length : 0}`);
 
   let progress = document.getElementById("progress") as HTMLElement;
+  let progressNumber = Number.parseInt(progress.dataset.progress as string)
 
 
-  if (status) {
+  if (percent > progressNumber) {
     const countPlus = setInterval(() => {
-      if (percent >= newPercent ) {
+      if (percent <= progressNumber) {
         clearInterval(countPlus)
       }
-      // progress.style.background = `conic-gradient(var(--fav-color) ${percent / 100
-      //   }turn, var(--mode-color) 0deg)`;
-      // progress.dataset.progress = percent.toFixed(1);
-      progressCount(progress, percent)
-      percent++;
-    }, 50)
+     progressCount(progress, progressNumber)
+      progressNumber++;
+    }, 20)
   }
-  if (!status) {
+  if (percent < progressNumber) {
     const countMin = setInterval(() => {
-      if (percent >= newPercent) {
+      if (progressNumber <= percent) {
         clearInterval(countMin)
       }
-      progressCount(progress, newPercent)
-      newPercent--;
-    }, 50)
+      progressCount(progress, progressNumber)
+      progressNumber--;
+    }, 20)
   }
 }
 
@@ -35,6 +31,6 @@ export const changeProgress = (tasks: any, newTasks: any, status: boolean) => {
 const progressCount = (element: any, number: number): void => {
   element.style.background = `conic-gradient(var(--fav-color) ${number / 100
     }turn, var(--mode-color) 0deg)`;
-  element.dataset.progress = number.toFixed(1);
+  element.dataset.progress = number;
 
 }

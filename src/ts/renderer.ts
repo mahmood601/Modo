@@ -75,7 +75,7 @@ export const renderTasks = async (arrayOfTasks: Task[]): Promise<void> => {
       hideMenu(opt.nextElementSibling);
     });
   });
-  changeProgress(await fromStore("tasks"), arrayOfTasks, true)
+  changeProgress(arrayOfTasks, true)
 }
 
 
