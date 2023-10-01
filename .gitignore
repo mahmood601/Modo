@@ -1,3 +1,6 @@
 node_modules
 package-lock.json
 pnpm-lock.yaml
+.npmrc
+serviceWorker.js.map
+dist/main.js.map
