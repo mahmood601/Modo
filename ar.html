@@ -92,12 +92,17 @@
     </p>
   </div>
   <!-- Allow this for developing -->
-  <script src="node_modules/eruda/eruda.js"></script>
-  <script>
-    eruda.init();
-  </script>
+  <!-- <script src="node_modules/eruda/eruda.js"></script> -->
+  <!-- <script> -->
+  <!--   eruda.init(); -->
+  <!-- </script> -->
   <!---->
   <script defer src="dist/main.js"></script>
+  <script>
+    if("navigator" in window) {
+      navigator.register("./serviceWorker.js")
+    }
+  </script>
 </body>
 
 </html>
