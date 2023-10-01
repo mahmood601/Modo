@@ -8,7 +8,9 @@ import { edit } from './Tasks/edit'
 import { makeCompleted } from './Tasks/makeComplete'
 import { changeProgress } from "./progress";
 
-export const renderTasks = async (arrayOfTasks: Task[]): Promise<void> => {
+const rtl = document.body.classList.contains("rtl")
+
+export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promise<void> => {
 
   parentinput.style.border = `2px solid var(--choosen-color)`;
   document.querySelectorAll(".tasks-list li")?.forEach((element) => {
@@ -27,23 +29,40 @@ export const renderTasks = async (arrayOfTasks: Task[]): Promise<void> => {
 
     let div = document.createElement("div");
     div.classList.add("options");
+
+    // use this for detect status and language
+    let completed: string = "";
+    if (!task.status) {
+      if (rtl) {
+        completed = "مكتملة"
+      } else {
+        completed = "Completed"
+      }
+    }
+    if (task.status) {
+      if (rtl) {
+        completed = "غير مكتملة"
+      } else {
+        completed = "Not Completed"
+      }
+    }
+ 
     div.innerHTML = `      
             <span class="span-opts">•••</span>
             <ul class="options-list hide">
               <li class="edit" onclick="window.edit(this)">
                 <i class="fa-solid fa-pencil fa-sm"></i>
-                <p>Edit</p>
+                <p>${rtl ? "تعديل" : "Edit"}</p>
               </li>
               <li class="completed" onclick="window.makeCompleted(this)">
                 <i class="fa-solid fa-check fa-sm"></i>
-                <p>${task.status == false ? "Completed" : "Not Completed"}</p>
+               <p>${completed}</p>
               </li>
-              <li class="delete" onclick="window.deleteThis(this)">
-                <i class="fa-solid fa-trash fa-sm"></i>
-                <p>Delete</p>
+              <li class="delete" onclick = "window.deleteThis(this)" >
+                <i class="fa-solid fa-trash fa-sm" > </i>
+                <p> ${rtl ? "حذف" : "Delete"} </p>
               </li>
-            </ul>
- `;
+            </ul>`;
 
     let sSpan = document.createElement("span");
     sSpan.classList.add("move-task");
@@ -75,7 +94,7 @@ export const renderTasks = async (arrayOfTasks: Task[]): Promise<void> => {
       hideMenu(opt.nextElementSibling);
     });
   });
-  changeProgress(arrayOfTasks, true)
+  changeProgress(arrayOfTasks, status)
 }
 
 

@@ -17,7 +17,7 @@ export const edit = (item: any) => {
 
     tasks[p.parentNode.dataset.id].content = p.textContent;
     updateStorage("tasks", () => tasks)
-    renderTasks(tasks);
+    renderTasks(tasks, true);
   });
 }
 

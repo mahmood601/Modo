@@ -12,7 +12,7 @@ export const deleteThis = async (item: any) => {
     task.id = index;
   });
   await toStore("tasks", tasks)
-  renderTasks(tasks);
+  renderTasks(tasks, false);
   changeProgress(tasks, status);
 }
 
@@ -20,7 +20,7 @@ export const setStatus = (element: any, status: boolean) => {
   fromStore("tasks").then(async (tasks: any) => {
     tasks[element.dataset.id].status = status;
     changeProgress(tasks, status)
-    renderTasks(tasks);
+    renderTasks(tasks, true);
     await toStore("tasks", tasks)
   })
 }

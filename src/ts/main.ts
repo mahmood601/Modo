@@ -1,11 +1,8 @@
 import './menu'
-import './notifications'
-import './serviceWorker'
 import './storage'
 import './renderer'
 import { fromStore, toStore } from './storage'
 import { renderTasks } from './renderer'
-import { changeProgress } from './progress'
 import {
   mainButton,
   modeButton,
@@ -114,13 +111,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     e.stopPropagation();
   });
 
-  let tasksFLS: Task[] = [];
   document.querySelector(".input-box")?.addEventListener("submit", async (e) => {
     if (taskContent.value !== "") {
       e.preventDefault();
 
       const tasks = await fromStore("tasks")
-      console.log(tasks);
 
       const updatedTasks = [...tasks, {
         icon: taskIcon.value,
@@ -131,7 +126,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       toStore("tasks", updatedTasks)
 
-      renderTasks(updatedTasks)
+      renderTasks(updatedTasks, true)
     }
     taskContent.value = "";
   });
@@ -187,13 +182,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   statusList[0].addEventListener("click", async () => {
     const tasks = await fromStore("tasks")
-    renderTasks(tasks)
+    renderTasks(tasks, false)
   })
 
   statusList[1].addEventListener("click", async () => {
     const tasks = await fromStore("tasks")
     renderTasks(
-      tasks.filter((ele: any) => (!ele.status ? ele : ""))
+      tasks.filter((ele: any) => (!ele.status ? ele : "")),
+      false
     )
   });
 
@@ -202,7 +198,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const tasks = await fromStore("tasks")
     renderTasks(
       tasks.filter((ele: any) => (ele.status ? ele : "")),
-    )
+    false)
   });
 
   fromStore("mode").then((mode: string) => {
@@ -225,8 +221,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   fromStore("tasks").then((tasks: Task[]) => {
     if (tasks && tasks != undefined) {
       // changeProgress([], tasks, true)
-      renderTasks(tasks);
+      renderTasks(tasks, true);
 
     }
   })
+
+  fromStore("fav-color").then((colorIdb: string) => {
+    colorsList.forEach((color: HTMLElement) => {
+      color.classList.remove("active")
+      if (colorIdb == color.dataset.color) {
+        color.classList.add("active")
+      }
+    })
+  })
+
 })
+
+

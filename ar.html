@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar">
 
 <head>
   <title>Modo</title>
@@ -23,7 +23,7 @@
   <meta name="theme-color" content="#00aaff" />
 </head>
 
-<body>
+<body class="rtl">
   <div class="container">
     <div class="header" role="banner">
       <h1 class="logo">Modo</h1>
@@ -36,21 +36,21 @@
         <img width="35" height="35" id="button" alt="" />
         <menu class="list hide">
           <li>
-            Dark
+            مظلم
             <span id="mode">
               <span></span>
             </span>
-            Light
+            مضيء
           </li>
           <li class="setting-container">
-            <p class="setting" id="setting"><i class="fa-solid fa-gear special-icon"></i>Setting</p>
+            <p class="setting" id="setting"><i class="fa-solid fa-gear special-icon"></i>الإعدادات</p>
             <ul class="setting-list hide">
-                <a class="language" href="/ar.html"><li><i class="fa-solid fa-language special-icon"></i>Arabic</li></a>
+                <a class="language" href="/index.html"><li><i class="fa-solid fa-language special-icon"></i>الإنجليزية</li></a>
               <li>
                 <label>
                   <input type="file" id="u-image" accept="image/x-png,image/gif,image/jpeg" />
                   <i class="fa-solid fa-image special-icon"></i>
-                  Change image
+                  تغيير الصورة
                 </label>
               </li>
               <li>
@@ -77,14 +77,14 @@
         <label class="icon checkbox">
           <input type="color" id="task-icon" />
         </label>
-        <input id="task-content" type="text" placeholder="Enter your task..." autocomplete="off" />
+        <input id="task-content" dir="rtl" type="text" placeholder="أدخل مهمتك..." autocomplete="off" />
       </form>
       <ul class="tasks-list"></ul>
     </div>
     <ul class="footer">
-      <li class="active">All</li>
-      <li>In Progress</li>
-      <li>Completed</li>
+      <li class="active">الكل</li>
+      <li>قيد الإنجاز</li>
+      <li>مكتملة</li>
     </ul>
     <p class="conc">
       Made With <span>♡</span> By

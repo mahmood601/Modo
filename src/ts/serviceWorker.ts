@@ -3,6 +3,7 @@
 const assets = [
   "/",
   "/index.html",
+  "/ar.html",
   "/dist/main.js",
   "/dist/serviceWorker.js",
   "/src/css/style.css",

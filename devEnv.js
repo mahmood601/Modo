@@ -18,11 +18,15 @@ const { commands, result } = concurrently(
       prefixColor: "magenta",
     }, 
     {
-      command: "esbuild --sourcemap=inline --watch --minify --color=true  --bundle src/ts/main.ts  --outfile=dist/main.js",
+      command: "esbuild --sourcemap=external --watch --minify --color=true  --bundle src/ts/main.ts  --outfile=dist/main.js",
       name: "typescript",
       prefixColor: "blue",
     },
-
+    {
+      command: "esbuild --sourcemap=external --watch --minify --color=true  --bundle src/ts/serviceWorker.ts  --outfile=serviceWorker.js",
+      name: "typescript",
+      prefixColor: "blue",
+    },
   ],
 );
 
