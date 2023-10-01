@@ -97,6 +97,11 @@
   <!--   eruda.init(); -->
   <!-- </script> -->
   <!---->
+<script>
+  if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('./serviceWorker.js')
+  }
+</script>
   <script defer src="dist/main.js"></script>
 </body>
 

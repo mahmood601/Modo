@@ -45,7 +45,9 @@
           <li class="setting-container">
             <p class="setting" id="setting"><i class="fa-solid fa-gear special-icon"></i>الإعدادات</p>
             <ul class="setting-list hide">
-                <a class="language" href="/index.html"><li><i class="fa-solid fa-language special-icon"></i>الإنجليزية</li></a>
+              <a class="language" href="/index.html">
+                <li><i class="fa-solid fa-language special-icon"></i>الإنجليزية</li>
+              </a>
               <li>
                 <label>
                   <input type="file" id="u-image" accept="image/x-png,image/gif,image/jpeg" />
@@ -99,8 +101,8 @@
   <!---->
   <script defer src="dist/main.js"></script>
   <script>
-    if("navigator" in window) {
-      navigator.register("./serviceWorker.js")
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('./serviceWorker.js')
     }
   </script>
 </body>

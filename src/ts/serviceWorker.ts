@@ -32,30 +32,34 @@ const assets = [
 
 // Install the app
 self.addEventListener("install", (event: any): void => {
-  event?.waitUntil(
-    caches.open("modo").then((cache: Cache) => cache.addAll(assets))
+  event?.waitUntil(async () => {
+    const cache = await caches.open("modo")
+    cache.addAll(assets)
+  }
   )
 })
 
-// Fetch Assets => [Need Review]
-self.addEventListener('fetch', (event: any): void => {
-  event.respondWith(
-    caches.match(event.request).then((response: Response | undefined): Response | Promise<Response> => {
-      return response || fetch(event.request);
-    })
-  );
+// control of new clients right away
+self.addEventListener('activate', (event: any) => {
+  event?.waitUntil(self.clients.claim());
 });
 
+// Fetch Assets 
+self.addEventListener('fetch', (event: any) => {
+  event.respondWith(async () => {
+      const cache = await caches.open("modo");
 
-self.addEventListener('fetch', (event: any): void => {
-  event.respondWith(
-    caches.open('modo').then((cache) => fetch(event.request)
-      .then((response: Response): Response => {
-        cache.put(event.request, response.clone());
-        return response;
-      })
-    )
-  );
+      // match the request to our cache
+      const cachedResponse = await cache.match(event.request);
+
+      // check if we got a valid response
+      if (cachedResponse !== undefined) {
+          // Cache hit, return the resource
+          return cachedResponse;
+      } else {
+        // Otherwise, go to the network
+          return fetch(event.request)
+      };
+  });
 });
-
 
