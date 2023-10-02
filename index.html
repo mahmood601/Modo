@@ -45,7 +45,9 @@
           <li class="setting-container">
             <p class="setting" id="setting"><i class="fa-solid fa-gear special-icon"></i>Setting</p>
             <ul class="setting-list hide">
-                <a class="language" href="./ar.html"><li><i class="fa-solid fa-language special-icon"></i>Arabic</li></a>
+              <a class="language" href="/ar.html">
+                <li><i class="fa-solid fa-language special-icon"></i>Arabic</li>
+              </a>
               <li>
                 <label>
                   <input type="file" id="u-image" accept="image/x-png,image/gif,image/jpeg" />
@@ -87,20 +89,37 @@
       <li>Completed</li>
     </ul>
     <p class="conc">
-      Made With <span>♡</span> By 
+      Made With <span>♡</span> By
       <a href="https://t.me/Mahmood28">Mahmood</a>
     </p>
   </div>
   <!-- Allow this for developing -->
-  <!-- <script src="node_modules/eruda/eruda.js"></script> -->
-  <!-- <script> -->
-  <!--   eruda.init(); -->
-  <!-- </script> -->
+  <script src="node_modules/eruda/eruda.js"></script>
+  <script>
+    eruda.init();
+  </script>
   <!---->
-<script>
-    navigator.serviceWorker.register('serviceWorker.js', {scope: '/Modo/'})
-</script>
-  <script defer src="dist/main.js"></script>
+  <script defer module src="dist/main.js"></script>
+  <script defer module src="serviceWorker.js"></script>
+  <script>
+    const registerServiceWorker = async () => {
+      if ("serviceWorker" in navigator) {
+        try {
+          const registration = await navigator.serviceWorker.register("/serviceWorker.js");
+          if (registration.installing) {
+            console.log("Service worker installing");
+          } else if (registration.waiting) {
+            console.log("Service worker installed");
+          } else if (registration.active) {
+            console.log("Service worker active");
+          }
+        } catch (error) {
+          console.error(`Registration failed with ${error}`);
+        }
+      }
+    };
+    registerServiceWorker();
+  </script>
 </body>
 
 </html>

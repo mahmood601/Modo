@@ -220,7 +220,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   fromStore("tasks").then((tasks: Task[]) => {
     if (tasks && tasks != undefined) {
-      // changeProgress([], tasks, true)
       renderTasks(tasks, true);
 
     }

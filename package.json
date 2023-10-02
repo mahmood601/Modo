@@ -13,12 +13,14 @@
   "author": "mahmood601",
   "license": "MIT",
   "devDependencies": {
+    "@types/workbox-sw": "^4.3.4",
     "concurrently": "^8.2.0",
     "eruda": "^3.0.0",
     "esbuild": "^0.19.3",
     "esbuild-server": "^0.3.0",
     "http-server": "^14.1.1",
     "idb-keyval": "^6.2.1",
-    "typescript": ""
+    "typescript": "",
+    "workbox-sw": "^7.0.0"
   }
 }
