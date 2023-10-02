@@ -99,7 +99,7 @@
   <!---->
 <script>
   if (typeof navigator.serviceWorker !== 'undefined') {
-    navigator.serviceWorker.register('./serviceWorker.js')
+    navigator.serviceWorker.register('serviceWorker.js', {scope: '/Modo/'})
   }
 </script>
   <script defer src="dist/main.js"></script>
