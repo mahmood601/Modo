@@ -1,6 +1,7 @@
 import './menu'
 import './storage'
 import './renderer'
+import './notifications'
 import { fromStore, toStore } from './storage'
 import { renderTasks } from './renderer'
 import {
@@ -15,6 +16,8 @@ import {
   parentinput,
   userImage,
 } from "./elements";
+
+
 
 // start sending info to localStorage -- mode - image - favColor --
 export interface Task {

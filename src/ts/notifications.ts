@@ -19,11 +19,11 @@ function showANotification  (options: NotificationOptions) {
 
 
 
-//This for testing only
-// var options = {
-//   body: 'مرحبا انا محمود',
-//   icon: '../../images/icon-72×72.ico',
-//   badge: '../../images/icon-72×72.webp',
+// This for testing only
+var options = {
+  body: 'مرحبا انا محمود',
+  icon: '../../images/icon-72×72.ico',
+  badge: '../../images/icon-72×72.webp',
 
-// };
-// showANotification(options)
+};
+showANotification(options)
