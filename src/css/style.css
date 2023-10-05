@@ -30,6 +30,24 @@
   text-decoration: none;
 }
 
+*:not(.task-content) {
+  user-select: none;
+}
+
+::selection {
+  color: var(--alt-mode-color);
+  background-color: var(--fav-color);
+}
+
+::-moz-selection {
+  color: var(--alt-mode-color);
+  background-color: var(--fav-color);
+}
+
+.task-content {
+  user-select: auto;
+}
+
 .container {
   min-width: 100vw;
   width: 100%;
@@ -167,7 +185,7 @@
   right: 100%;
 }
  
-.header .menu .list li {
+.header .menu .list > li {
   font-weight: 600;
   padding: 8px;
 }
@@ -178,7 +196,8 @@
 
 .tasks .tasks-list li .options span:hover,
 .tasks .tasks-list li .move-task:hover,
-.header .menu .list li:hover {
+.header .menu .list li:hover,
+.header .menu .list a:hover {
   background-color: var(--hover-color);
   border-radius: var(--main-radius);
 }
@@ -246,7 +265,8 @@
   display: none;
 }
 
-.setting-list li {
+.setting-list > li,
+.setting-list > a {
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
@@ -534,6 +554,7 @@ input[type="color"] {
   padding: 5px;
   width: 150px;
   border-radius: var(--main-radius);
+  height: fit-content;
 }
 
 .tasks .tasks-list li .options-list li i {  
@@ -553,7 +574,6 @@ input[type="color"] {
   color: var(--alt-mode-color);
   width: fit-content;
   margin-left: 5px;
-  height: 25px;
 }
 
 .rtl .tasks .tasks-list li .options-list li p {
@@ -565,6 +585,7 @@ input[type="color"] {
 .tasks .tasks-list li .options-list li i {
   margin-right: 5px;
   color: var(--alt-mode-color);
+  margin-top: 3px;
 }
 
 .conc {

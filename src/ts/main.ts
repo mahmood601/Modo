@@ -19,7 +19,7 @@ import {
 
 
 
-// start sending info to localStorage -- mode - image - favColor --
+// start sending info to localStorage -- mode - image - favColor
 export interface Task {
   icon: string;
   id: number;
@@ -68,46 +68,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     toStore("mode", mode)
   });
 
-
-  const favColor = await fromStore("fav-color")
-
-  if (favColor == undefined) {
-    await toStore("fav-color", "")
-  } else {
-    document
-      .querySelector("html")
-      ?.style.setProperty("--fav-color", favColor);
-  }
-
-
-  extraColor?.addEventListener("input", () => {
-    colorsList[4].dataset.color = extraColor.value;
-    toStore("fav-color", extraColor.value)
-
-    document
-      .querySelector("html")
-      ?.style.setProperty("--fav-color", extraColor.value);
-  });
-
-  colorsList.forEach((color: any) => {
-    color.addEventListener("click", () => {
-      toStore("fav-color", color.dataset.color)
-      document
-        .querySelector("html")
-        ?.style.setProperty("--fav-color", color.dataset.color);
-    });
-  });
-
-
-
+  // start handling tasks operations
   const tasks = await fromStore("tasks")
 
   if (tasks == undefined) {
     await toStore("tasks", [])
   }
 
+  fromStore("tasks").then((tasks: Task[]) => {
+    if (tasks && tasks != undefined) {
+      renderTasks(tasks, true);
 
-  // start handling tasks operations
+    }
+  })
+
   // Define an object to store all task info
   inputTaskColor?.addEventListener("input", (e) => {
     parentinput.style.border = `2px solid ${inputTaskColor.value}`;
@@ -132,6 +106,44 @@ document.addEventListener("DOMContentLoaded", async () => {
       renderTasks(updatedTasks, true)
     }
     taskContent.value = "";
+  });
+
+  fromStore("fav-color").then((colorIdb: string) => {
+    colorsList.forEach((color: HTMLElement) => {
+      color.classList.remove("active")
+      if (colorIdb == color.dataset.color) {
+        color.classList.add("active")
+      }
+    })
+  })
+
+
+  const favColor = await fromStore("fav-color")
+
+  if (favColor == undefined) {
+    await toStore("fav-color", "")
+  } else {
+    document
+      .querySelector("html")
+      ?.style.setProperty("--fav-color", favColor);
+  }
+
+  extraColor?.addEventListener("input", () => {
+    colorsList[4].dataset.color = extraColor.value;
+    toStore("fav-color", extraColor.value)
+
+    document
+      .querySelector("html")
+      ?.style.setProperty("--fav-color", extraColor.value);
+  });
+
+  colorsList.forEach((color: any) => {
+    color.addEventListener("click", () => {
+      toStore("fav-color", color.dataset.color)
+      document
+        .querySelector("html")
+        ?.style.setProperty("--fav-color", color.dataset.color);
+    });
   });
 
   const darkColors = new Map();
@@ -201,7 +213,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const tasks = await fromStore("tasks")
     renderTasks(
       tasks.filter((ele: any) => (ele.status ? ele : "")),
-    false)
+      false)
   });
 
   fromStore("mode").then((mode: string) => {
@@ -219,22 +231,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.querySelector("html")?.style.setProperty(variable, value);
       }
     }
-  })
-
-  fromStore("tasks").then((tasks: Task[]) => {
-    if (tasks && tasks != undefined) {
-      renderTasks(tasks, true);
-
-    }
-  })
-
-  fromStore("fav-color").then((colorIdb: string) => {
-    colorsList.forEach((color: HTMLElement) => {
-      color.classList.remove("active")
-      if (colorIdb == color.dataset.color) {
-        color.classList.add("active")
-      }
-    })
   })
 
 })

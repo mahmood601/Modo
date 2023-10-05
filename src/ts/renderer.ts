@@ -10,6 +10,9 @@ import { changeProgress } from "./progress";
 
 const rtl = document.body.classList.contains("rtl")
 
+/**
+ * Function to render tasks
+ * */
 export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promise<void> => {
 
   parentinput.style.border = `2px solid var(--choosen-color)`;
@@ -97,8 +100,7 @@ export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promis
   changeProgress(arrayOfTasks, status)
 }
 
-
-
+// add funtions to window object
 declare global {
   interface Window {
     edit: any;
