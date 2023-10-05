@@ -195,7 +195,6 @@
 }
 
 .tasks .tasks-list li .options span:hover,
-.tasks .tasks-list li .move-task:hover,
 .header .menu .list li:hover,
 .header .menu .list a:hover {
   background-color: var(--hover-color);
@@ -480,8 +479,7 @@ input[type="color"] {
   overflow-x: scroll;
   color: var(--alt-mode-color);
 }
-.tasks .tasks-list li .options span,
-.tasks .tasks-list li .move-task {
+.tasks .tasks-list li .options span {
   display: block;
   height: fit-content;
   transform: rotate(90deg);
