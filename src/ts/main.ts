@@ -1,6 +1,7 @@
 import './menu'
 import './storage'
 import './renderer'
+import './dargAndDrop'
 import './notifications'
 import { fromStore, toStore } from './storage'
 import { renderTasks } from './renderer'

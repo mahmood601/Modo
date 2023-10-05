@@ -7,6 +7,7 @@ import { deleteThis } from './Tasks/delete'
 import { edit } from './Tasks/edit'
 import { makeCompleted } from './Tasks/makeComplete'
 import { changeProgress } from "./progress";
+import { dragFun } from "./dargAndDrop";
 
 const rtl = document.body.classList.contains("rtl")
 
@@ -20,6 +21,7 @@ export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promis
     element.remove();
   });
 
+  let id = 0;
   arrayOfTasks.forEach((task, index) => {
     let fSpan = document.createElement("span");
     fSpan.classList.add("icon");
@@ -49,7 +51,7 @@ export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promis
         completed = "Not Completed"
       }
     }
- 
+
     div.innerHTML = `      
             <span class="span-opts">•••</span>
             <ul class="options-list hide">
@@ -67,12 +69,9 @@ export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promis
               </li>
             </ul>`;
 
-    let sSpan = document.createElement("span");
-    sSpan.classList.add("move-task");
-    sSpan.textContent = ":::";
-
     let li = document.createElement("li");
-    li.setAttribute("data-id", `${task.id}`);
+    li.setAttribute("data-id", `${id++}`);
+    li.setAttribute("draggable", "true");
     li.setAttribute("data-status", task.status ? "completed" : "not-completed");
     fromStore("tasks").then((tasks: Task[]) => {
       if (tasks?.length >= 5 && (tasks?.length - 1 == index || tasks?.length - 2 == index)) {
@@ -82,7 +81,6 @@ export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promis
     li.append(fSpan);
     li.append(p);
     li.append(div);
-    li.append(sSpan);
 
 
     document.querySelector(".tasks-list")?.append(li);
@@ -98,6 +96,10 @@ export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promis
     });
   });
   changeProgress(arrayOfTasks, status)
+
+  const dragItems: NodeListOf<Element> = document.querySelectorAll(".tasks-list > li");
+  
+  dragFun(dragItems)
 }
 
 // add funtions to window object
@@ -111,3 +113,4 @@ declare global {
 window.edit = edit;
 window.deleteThis = deleteThis;
 window.makeCompleted = makeCompleted;
+
