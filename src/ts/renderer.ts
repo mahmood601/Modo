@@ -27,6 +27,10 @@ export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promis
     fSpan.classList.add("icon");
     fSpan.style.border = `2px solid ${task.icon}`;
     fSpan.style.color = `${task.icon}`;
+    fSpan.setAttribute("onclick", "window.makeCompleted(this)")
+    if (task.status) {
+      fSpan.classList.add("checked")
+    }
 
     let p = document.createElement("p");
     p.classList.add("task-content");
@@ -35,23 +39,6 @@ export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promis
     let div = document.createElement("div");
     div.classList.add("options");
 
-    // use this for detect status and language
-    let completed: string = "";
-    if (!task.status) {
-      if (rtl) {
-        completed = "مكتملة"
-      } else {
-        completed = "Completed"
-      }
-    }
-    if (task.status) {
-      if (rtl) {
-        completed = "غير مكتملة"
-      } else {
-        completed = "Not Completed"
-      }
-    }
-
     div.innerHTML = `      
             <span class="span-opts">•••</span>
             <ul class="options-list hide">
@@ -59,11 +46,7 @@ export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promis
                 <i class="fa-solid fa-pencil fa-sm"></i>
                 <p>${rtl ? "تعديل" : "Edit"}</p>
               </li>
-              <li class="completed" onclick="window.makeCompleted(this)">
-                <i class="fa-solid fa-check fa-sm"></i>
-               <p>${completed}</p>
-              </li>
-              <li class="delete" onclick = "window.deleteThis(this)" >
+             <li class="delete" onclick = "window.deleteThis(this)" >
                 <i class="fa-solid fa-trash fa-sm" > </i>
                 <p> ${rtl ? "حذف" : "Delete"} </p>
               </li>
@@ -73,11 +56,7 @@ export const renderTasks = async (arrayOfTasks: Task[], status: boolean): Promis
     li.setAttribute("data-id", `${id++}`);
     li.setAttribute("draggable", "true");
     li.setAttribute("data-status", task.status ? "completed" : "not-completed");
-    fromStore("tasks").then((tasks: Task[]) => {
-      if (tasks?.length >= 5 && (tasks?.length - 1 == index || tasks?.length - 2 == index)) {
-        li.classList.add("last-li")
-      }
-    })
+
     li.append(fSpan);
     li.append(p);
     li.append(div);

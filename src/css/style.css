@@ -190,10 +190,6 @@
   padding: 8px;
 }
 
-.rtl .tasks .tasks-list > li {
-  flex-direction: row-reverse;
-}
-
 .tasks .tasks-list li .options span:hover,
 .header .menu .list li:hover,
 .header .menu .list a:hover {
@@ -444,6 +440,20 @@ input[type="color"] {
   align-items: center;
 }
 
+.tasks .tasks-list > li.dragging {
+  opacity: .5;
+}
+
+.tasks .tasks-list > li.over {
+  border: 2px solid var(--fav-color);
+}
+
+.rtl .tasks .tasks-list > li {
+  flex-direction: row-reverse;
+}
+
+
+
 .rtl .tasks .tasks-list > li p {
   text-align: right;
   margin-right: 5px;
@@ -509,15 +519,15 @@ input[type="color"] {
 }
 
 .tasks .tasks-list li:nth-child(1) .options-list {
-  top: 100%;
-  transform: translateY(-25%);
+  transform: translateY(-15px);
 }
 
-.tasks .tasks-list .last-li .options-list {
-  top: -115%;
+.tasks .tasks-list li:last-of-type .options-list {
+  transform: translateY(-65px);
 }
-.tasks .tasks-list .last-li .options-list::before {
-  transform: translateY(35px);
+.tasks .tasks-list li:last-of-type .options-list::before {
+
+  transform: translateY(15px);
 }
 
 .tasks .tasks-list li .hide {
@@ -553,6 +563,7 @@ input[type="color"] {
   width: 150px;
   border-radius: var(--main-radius);
   height: fit-content;
+  height: 30px;
 }
 
 .tasks .tasks-list li .options-list li i {  

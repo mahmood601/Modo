@@ -4,7 +4,7 @@ import { Task } from "./main";
 import { renderTasks } from "./renderer";
 
 // Enable polyfill to unsupported browsers
-polyfill();
+polyfill({holdToDrag: 1000});
 
 // variables for store src and target element
 let srcElement: any,
@@ -17,7 +17,6 @@ async function swapElements(srcId: any, targetId: any) {
   const tasks: Task[] = await fromStore("tasks")
   tasks.splice(Number.parseInt(targetId), 0, tasks.splice(Number.parseInt(srcId), 1)[0])
   renderTasks(tasks, false)
-  console.log(tasks);
   
   await toStore("tasks", tasks)
 }
@@ -59,9 +58,6 @@ export async function dragFun(dragItems: NodeListOf<Element>) {
 
     item.addEventListener("drop", (e: any) => {
       e.preventDefault();
-      console.log(`src element: ${srcElement.dataset.id}`);
-      console.log(`over element: ${overElement.dataset.id}`);
-
       swapElements(srcElement.dataset.id, overElement.dataset.id)
     })
 
