@@ -518,13 +518,14 @@ input[type="color"] {
   width: fit-content;
 }
 
-.tasks .tasks-list li:nth-child(1) .options-list {
-  transform: translateY(-15px);
-}
-
 .tasks .tasks-list li:last-of-type .options-list {
   transform: translateY(-65px);
 }
+
+.tasks .tasks-list li:first-of-type .options-list {
+  transform: translateY(-15px);
+}
+
 .tasks .tasks-list li:last-of-type .options-list::before {
 
   transform: translateY(15px);
