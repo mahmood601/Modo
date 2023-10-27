@@ -3,7 +3,6 @@
 
 ![](./images/README/modo.webp)
 
-----------------------
 # Content 
  -  [Intro](#Intro)
  -  [Install](#Install)
@@ -11,12 +10,9 @@
  -  [Plans and comming features](#Plans-and-comming-features)
  -  [For contributers](#For-contributers)
  -  [Author](#Author)
-----------------------
 
 ## Intro
 Modo, It's a modern todo app focus on customization and feedback improvements  
-
-----------------------
 
 ## Install
 1). Go to a browser support pwa like chrome, edge, etc.
@@ -35,8 +31,6 @@ Modo, It's a modern todo app focus on customization and feedback improvements
 
 ![](./images/README/app.webp)
 
-----------------------
-
 ## Features
 - Support Dark ⬛ and Light ⬜ Mode.
 - Add Task ☕.
@@ -45,8 +39,6 @@ Modo, It's a modern todo app focus on customization and feedback improvements
 - Make task as Completed ✅.
 - Use your favorite color 🎨.
 - and more! 😎.
-
-----------------------
 
 ## plans and comming features
 - [x] Add Notifications.
@@ -57,8 +49,6 @@ Modo, It's a modern todo app focus on customization and feedback improvements
 - [ ] Add docs page.
 - [ ] Sync with google calendar.
 - [ ] Improve ui.
-
-----------------------
 
 ## For contributers
 This Project is license under MIT so you can do what you need but you should mention the source.
@@ -75,8 +65,6 @@ npm i
 ```bash
 npm run dev
 ```
-
-----------------------
 
 ## Author
 
