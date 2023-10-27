@@ -10,8 +10,23 @@
   "orientation": "portrait-primary",
   "dir": "auto",
   "lang": "en",
-  "display_override": ["standalone", "window-controls-overlay"],
+  "display_override": [
+    "standalone",
+    "window-controls-overlay"
+  ],
   "description": "Free Todo List for everyone 💙",
+  "screenshots": [
+    {
+      "src": "images/screenshots/screen-phone.png",
+      "sizes": "750×1334",
+      "type": "image/png"
+    },
+    {
+      "src": "images/screenshots/screen-desktop.png",
+      "sizes": "1280x800",
+      "type": "image/png"
+    },
+  ],
   "icons": [
     {
       "src": "images/icons/windows11/SmallTile.scale-100.png",
@@ -462,5 +477,4 @@
       "sizes": "1024x1024"
     }
   ]
-
 }
