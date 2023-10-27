@@ -1,14 +1,17 @@
-<h1 align="center"><span style="color: #00aaff">M</span>odo</h1>
-<p align="center">Free Todo List with powerful customization ❤️</p>
-![](./images/README/modo.webp)
-----------------------
+<div>
+  <h1 align="center">Modo</h1>
+  <p align="center">Free Todo List with powerful customization ❤️</p>
+</div>
+
+<img align="center" src="./images/README/modo.webp" />
+
 # Content
- -  [Intro](#Intro)
- -  [Install](#Install)
- -  [Features](#Features)
- -  [Plans and comming features](#Plans-and-comming-features)
- -  [For contributers](#For-contributers)
- -  [Author](#Author)
+ - [Intro](#intro)
+ - [Install](#install)
+ - [Features](#features)
+ - [Plans and comming features](#plans-and-comming-features)
+ - [For contributers](#for-contributers)
+ - [Author](#author)
 ----------------------
 # Intro
 Modo, It's a modern todo app focus on customization and feedback improvements  
