@@ -1,5 +1,6 @@
 <h1 align="center"><span style="color: #00aaff">M</span>odo</h1>
 <p align="center">Free Todo List with powerful customization ❤️</p>
+
 ![](./images/README/modo.webp)
 ----------------------
 # Content 
