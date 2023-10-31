@@ -70,5 +70,5 @@ npm run dev
 
 Hi, I'm Mahmood.
 I'm a beginner in frontend and I love to learn everything new in the world 🌎
-- [Mahm|•.•|d](https://t.me/Mahmood28). Chat me on telegram.
+- [Mahmood](https://t.me/Mahmood28). Chat me on telegram.
 - [Mahmood T Ali](https://www.facebook.com/profile.php?id=100081145688127). My Facebook page.

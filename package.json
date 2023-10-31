@@ -21,6 +21,7 @@
     "http-server": "^14.1.1",
     "idb-keyval": "^6.2.1",
     "mobile-drag-drop": "^3.0.0-rc.0",
+    "pjax": "^0.2.8",
     "typescript": "",
     "workbox-sw": "^7.0.0"
   }
