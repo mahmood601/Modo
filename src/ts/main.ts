@@ -31,12 +31,11 @@ export interface Task {
 
 // Start Handling Image
 document.addEventListener("DOMContentLoaded", async () => {
+
   const image = await fromStore("image")
   if (image == undefined) {
     await toStore("image", "")
   }
-
-
   if (image !== "") {
     mainButton?.setAttribute("src", image);
   } else {
@@ -55,8 +54,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     event.stopPropagation();
   });
-
-
 
   const mode = await fromStore("mode")
 
@@ -178,9 +175,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  /**
-   * Remove a specific classes from element
-   * */
+  
+// Remove a specific classes from element
+
   function changeActive(
     collectionOfEle: NodeListOf<Element>,
     ...classes: string[]

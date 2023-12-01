@@ -22,8 +22,8 @@ function showANotification  (options: NotificationOptions) {
 // This for testing only
 var options = {
   body: 'مرحبا انا محمود',
-  icon: '../../images/icon-72×72.ico',
-  badge: '../../images/icon-72×72.webp',
+  icon: '../../images/icons/android/android-launchericon-512-512.png',
+  badge: '../../images/icon.png',
 
 };
 showANotification(options)
