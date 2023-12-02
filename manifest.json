@@ -18,7 +18,7 @@
   "screenshots": [
     {
       "src": "images/screenshots/screen-phone.png",
-      "sizes": "750×1334",
+      "sizes": "750x1334",
       "type": "image/png"
     },
     {

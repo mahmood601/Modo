@@ -21,7 +21,7 @@ function showANotification  (options: NotificationOptions) {
 
 // This for testing only
 var options = {
-  body: 'مرحبا انا محمود',
+  body: "مرحبا، أنا Modo! هذا الإشعار للاختبار فحسب. يمكنك إغلاقه من إعدادات متصفحك..",
   icon: '../../images/icons/android/android-launchericon-512-512.png',
   badge: '../../images/icon.png',
 
