@@ -4,3 +4,4 @@ pnpm-lock.yaml
 .npmrc
 serviceWorker.js.map
 dist/main.js.map
+.vercel

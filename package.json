@@ -24,5 +24,8 @@
     "pjax": "^0.2.8",
     "typescript": "",
     "workbox-sw": "^7.0.0"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
   }
 }
