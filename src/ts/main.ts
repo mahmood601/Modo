@@ -18,15 +18,7 @@ import {
   userImage,
 } from "./elements";
 
-
-
-// start sending info to localStorage -- mode - image - favColor
-export interface Task {
-  icon: string;
-  id: number;
-  content: string;
-  status: boolean;
-}
+import { Task } from "./types";
 
 
 // Start Handling Image
@@ -175,8 +167,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  
-// Remove a specific classes from element
+
+  // Remove a specific classes from element
 
   function changeActive(
     collectionOfEle: NodeListOf<Element>,

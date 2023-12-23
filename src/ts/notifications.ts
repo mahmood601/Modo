@@ -5,14 +5,14 @@ document.querySelector(".fa-bell")?.addEventListener("click", (e) => {
   });
 })
 
-function showANotification  (options: NotificationOptions) {
+function showANotification(options: NotificationOptions) {
   if (Notification.permission === 'granted') {
     navigator.serviceWorker.getRegistrations().then((reg) => {
       reg[0].showNotification('Modo', options);
       reg[0].pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: "",
-      }).then(() =>{})
+      }).then(() => { })
     });
   }
 }
@@ -26,4 +26,10 @@ var options = {
   badge: '../../images/icon.png',
 
 };
-showANotification(options)
+// showANotification(options)
+self.addEventListener('push', (event) => {
+  event.waitUntil(
+    self.registration.showNotification('Notification Title', options)
+  );
+});
+

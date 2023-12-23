@@ -50,7 +50,8 @@
       <nav class="menu">
         <div class="icons">
           <i class="fa-solid fa-bell"></i>
-          <a name="github" href="https://github.com/mahmood601/Modo"><i class="fa-brands fa-github"></i></a>
+          <a name="github" aria-label="link to github repo of the project" href="https://github.com/mahmood601/Modo"><i
+              class="fa-brands fa-github"></i></a>
         </div>
         <img width="35" height="35" id="button" alt="" />
         <menu class="list hide">
@@ -64,9 +65,11 @@
           <li class="setting-container">
             <p class="setting" id="setting"><i class="fa-solid fa-gear special-icon"></i>Setting</p>
             <ul class="setting-list hide">
-              <a class="language" href="/ar.html">
-                <li><i class="fa-solid fa-language special-icon"></i>Arabic</li>
-              </a>
+              <li>
+                <a class="language" href="/ar.html">
+                  <i class="fa-solid fa-language special-icon"></i>Arabic
+                </a>
+              </li>
               <li>
                 <label>
                   <input type="file" id="u-image" accept="image/x-png,image/gif,image/jpeg" />
@@ -125,13 +128,6 @@
       if ("serviceWorker" in navigator) {
         try {
           const registration = await navigator.serviceWorker.register("/serviceWorker.js", {scope: "/"});
-          if (registration.installing) {
-            console.log("Service worker installing");
-          } else if (registration.waiting) {
-            console.log("Service worker installed");
-          } else if (registration.active) {
-            console.log("Service worker active");
-          }
         } catch (error) {
           console.error(`Registration failed with ${error}`);
         }
@@ -139,10 +135,6 @@
     };
     registerServiceWorker();
   </script>
-  <script>
-    window.va = window.va || function () {(window.vaq = window.vaq || []).push(arguments);};
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 
 </html>
